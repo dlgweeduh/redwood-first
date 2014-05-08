@@ -1,0 +1,199 @@
+
+.container-gears{
+  margin: 100px 0 0 -110px;
+  height: 800px;
+/*  height:625px;*/
+  padding: 0;
+}
+
+.container-gears .gear1{
+  background: url('../images/gears/gear4.png') no-repeat;
+  width: 100px;
+  height: 100px;
+  margin-left: 176px;
+  margin-top: 111px;
+  position: absolute;
+  float: right;
+}
+
+.container-gears .gear2{
+  background: url('../images/gears/gear3.png') no-repeat;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  margin-top: 137px;
+  margin-left: 70px;
+  float: left;
+}
+
+.container-gears .gear3{
+  background: url('../images/gears/gear2.png') no-repeat;
+  width: 107px;
+  height: 107px;
+  position: absolute;
+  margin-top: 196px;
+  margin-left: 202px;
+}
+
+/*.container-gears .gear4{
+  background: url('../images/gears/gear5.png') no-repeat;
+  width: 122px;
+  height: 122px;
+  position: absolute;
+  margin-top: 283px;
+  margin-left: 250px;
+}*/
+
+.container-gears .gear5{
+  background: url('../images/gears/gear6.png') no-repeat;
+  width: 123px;
+  height: 124px;
+  position: absolute;
+  margin-top: 167px;
+  margin-left: 302px;
+}
+
+/*.container-gears .gear6{
+  background: url('../images/gears/gear7.png') no-repeat;
+  width: 104px;
+  height: 105px;
+  position: absolute;
+  margin-top: 278px;
+  margin-left: 370px;
+}*/
+
+.container-gears .gear7{
+  background: url('../images/gears/gear8.png') no-repeat;
+  width: 140px;
+  height: 142px;
+  position: absolute;
+  margin-top: 162px;
+  margin-left: 423px;
+}
+
+/*.container-gears .gear8{
+  background: url('../images/gears/gear9.png') no-repeat;
+  width: 123px;
+  height: 123px;
+  position: absolute;
+  margin-top: 295px;
+  margin-left: 470px;
+}*/
+
+.container-gears .gear9{
+  background: url('../images/gears/gear10.png') no-repeat;
+  width: 129px;
+  height: 128px;
+  position: absolute;
+  margin-top: 403px;
+  margin-left: 1109px;
+}
+
+/*.container-gears .gear10{
+  background: url('../images/gears/gear11.png') no-repeat;
+  width: 146px;
+  height: 145px;
+  position: absolute;
+  margin-top: 705px;
+  margin-left: 955px;
+}*/
+
+.container-gears .gear11{
+  background: url('../images/gears/gear12.png') no-repeat;
+  width: 149px;
+  height: 151px;
+  position: absolute;
+  margin-top: 319px;
+  margin-left: 595px;
+}
+
+.container-gears .gear12{
+  background: url('../images/gears/gear3.png') no-repeat;
+  width: 120px;
+  height: 120px;
+  margin-top: 220px;
+  margin-left: 549px;
+  float: left;
+}
+
+.container-gears .gear13{
+  background: url('../images/gears/gear5.png') no-repeat;
+  width: 122px;
+  height: 122px;
+  position: absolute;
+  margin-top: 338px;
+  margin-left: 740px;
+}
+
+.container-gears .gear14{
+  background: url('../images/gears/gear7.png') no-repeat;
+  width: 104px;
+  height: 105px;
+  position: absolute;
+  margin-top: 375px;
+  margin-left: 851px;
+}
+
+/*.container-gears .gear15{
+  background: url('../images/gears/gear6.png') no-repeat;
+  width: 123px;
+  height: 124px;
+  position: absolute;
+  margin-top: 450px;
+  margin-left: 920px;
+}*/
+
+.container-gears .gear16{
+  background: url('../images/gears/gear9.png') no-repeat;
+  width: 123px;
+  height: 123px;
+  position: absolute;
+  margin-top: 500px;
+  margin-left: 1037px;
+}
+
+/*.container-gears .gear17{
+  background: url('../images/gears/gear8.png') no-repeat;
+  width: 140px;
+  height: 142px;
+  position: absolute;
+  margin-top: 568px;
+  margin-left: 930px;
+}*/
+
+.container-gears .gear18{
+  background: url('../images/gears/gear12.png') no-repeat;
+  width: 149px;
+  height: 151px;
+  position: absolute;
+  margin-top: 400px;
+  margin-left: 1235px;
+}
+
+.container-gears .gear19 {
+  background: url('../images/gears/gear11.png') no-repeat;
+  width: 146px;
+  height: 145px;
+  position: absolute;
+  margin-top: 393px;
+  margin-left: 943px;
+}
+
+.container-gears .gear20{
+  background: url('../images/gears/gear13.png') no-repeat;
+  width: 146px;
+  height: 145px;
+  position: absolute;
+  margin-top: 80px;
+  margin-left: 538px;
+}
+/*
+.container-gears .gear21{
+  background: url('../images/gears/gear12.png') no-repeat;
+  width: 149px;
+  height: 151px;
+  position: absolute;
+  margin-top: 342px;
+  margin-left: 587px;
+}*/
+

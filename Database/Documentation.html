@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+    version="-//W3C//DTD XHTML 1.1//EN" dir="ltr">
+<!-- $Id: Documentation.html 13041 2009-10-12 22:27:06Z lem9 $ -->
+<!--
+    vim: expandtab ts=4 sw=4 sts=4 tw=78
+-->
+
+<head>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>phpMyAdmin 2.11.9.6 - Documentation</title>
+    <link rel="stylesheet" type="text/css" href="docs.css" />
+</head>
+
+<body id="top">
+
+<!-- TOP MENU -->
+<ul class="header">
+    <li><a href="#top">Top</a></li>
+    <li><a href="#require">Requirements</a></li>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#setup">Installation</a></li>
+    <li><a href="#setup_script">Setup script</a></li>
+    <li><a href="#config">Configuration</a></li>
+    <li><a href="#transformations">Transformations</a></li>
+    <li><a href="#faq"><abbr title="Frequently Asked Questions">FAQ</abbr></a></li>
+    <li><a href="#developers">Developers</a></li>
+    <li><a href="#credits">Credits</a></li>
+    <li><a href="translators.html">Translators</a></li>
+    <li><a href="#glossary">Glossary</a></li>
+</ul>
+
+<h1>phpMyAdmin 2.11.9.6 Documentation</h1>
+
+<ul><li><a href="http://www.phpmyadmin.net/">
+            phpMyAdmin homepage</a></li>
+    <li><a href="https://sf.net/projects/phpmyadmin/">
+            SourceForge phpMyAdmin project page</a></li>
+    <li><a href="http://wiki.phpmyadmin.net">
+            Official phpMyAdmin wiki</a></li>
+    <li>Local documents:
+        <ul><li>Version history: <a href="changelog.php">ChangeLog</a></li>
+            <li>General notes: <a href="readme.php">README</a></li>
+            <li>License: <a href="license.php">LICENSE</a></li>
+        </ul>
+    </li>
+    <li>Documentation version:
+        <i>$Id: Documentation.html 13041 2009-10-12 22:27:06Z lem9 $</i>
+    </li>
+</ul>
+
+<!-- REQUIREMENTS -->
+<h2 id="require">Requirements</h2>
+
+<ul><li><b>PHP</b>
+        <ul><li>You need PHP 4.2.0 or newer, with <tt>session</tt> support
+                (<a href="#faq1_31">see
+                <abbr title="Frequently Asked Questions">FAQ</abbr> 1.31</a>)
+                </li>
+            <li>You need GD2 support in PHP to display inline
+                thumbnails of JPEGs (&quot;image/jpeg: inline&quot;) with their
+                original aspect ratio</li>
+            <li>You need PHP 4.3.0 or newer to use the
+                &quot;text/plain: external&quot;  MIME-based transformation</li>
+            <li>When using the &quot;cookie&quot;
+                <a href="#authentication_modes">authentication method</a>, the
+                <a href="http://www.php.net/mcrypt"><tt>mcrypt</tt></a> extension
+                is strongly suggested for most users and is <b>required</b> for
+                64&#8211;bit machines. Not using mcrypt will cause phpMyAdmin to
+                load pages significantly slower.
+            </li>
+        </ul>
+    </li>
+    <li><b>MySQL</b> 3.23.32 or newer (<a href="#faq1_17">details</a>);</li>
+    <li><b>Web browser</b> with cookies enabled.</li>
+</ul>
+
+<!-- INTRODUCTION -->
+<h2 id="intro">Introduction</h2>
+
+<p> phpMyAdmin can manage a whole MySQL server (needs a super-user) as well as
+    a single database. To accomplish the latter you'll need a properly set up
+    MySQL user who can read/write only the desired database. It's up to you to
+    look up the appropriate part in the MySQL manual.
+</p>
+
+<h3>Currently phpMyAdmin can:</h3>
+
+<ul><li>browse and drop databases, tables, views, fields and indexes</li>
+    <li>create, copy, drop, rename and alter databases, tables, fields and
+        indexes</li>
+    <li>maintenance server, databases and tables, with proposals on server
+        configuration</li>
+    <li>execute, edit and bookmark any
+        <abbr title="structured query language">SQL</abbr>-statement, even
+        batch-queries</li>
+    <li>load text files into tables</li>
+    <li>create<a href="#footnote_1"><sup>1</sup></a> and read dumps of tables
+        </li>
+    <li>export<a href="#footnote_1"><sup>1</sup></a> data to various formats:
+        <abbr title="comma separated values">CSV</abbr>,
+    <abbr title="Extensible Markup Language">XML</abbr>,
+    <abbr title="Portable Document Format">PDF</abbr>,
+    <abbr title="International Standards Organisation">ISO</abbr>/<abbr
+    title="International Electrotechnical Commission">IEC</abbr> 26300 -
+    OpenDocument Text and Spreadsheet,
+    <abbr title="Microsoft Word 2000">Word</abbr>,
+    <abbr title="Microsoft Excel 2000">Excel</abbr> and L<sup>A</sup>T<sub><big>E</big></sub>X formats
+        </li>
+    <li>administer multiple servers</li>
+    <li>manage MySQL users and privileges</li>
+    <li>check referential integrity in MyISAM tables</li>
+    <li>using Query-by-example (QBE), create complex queries automatically
+        connecting required tables</li>
+    <li>create <abbr title="Portable Document Format">PDF</abbr> graphics of
+        your Database layout</li>
+    <li>search globally in a database or a subset of it</li>
+    <li>transform stored data into any format using a set of predefined
+        functions, like displaying BLOB-data as image or download-link
+        </li>
+    <li>support InnoDB tables and foreign keys <a href="#faq3_6">(see
+        <abbr title="Frequently Asked Questions">FAQ</abbr> 3.6)</a></li>
+    <li>support mysqli, the improved MySQL extension <a href="#faq1_17">
+        (see <abbr title="Frequently Asked Questions">FAQ</abbr> 1.17)</a></li>
+    <li>communicate in <a href="./translators.html">54 different languages</a>
+        </li>
+</ul>
+
+<h4>A word about users:</h4>
+<p> Many people have difficulty
+    understanding the concept of user management with regards to phpMyAdmin. When
+    a user logs in to phpMyAdmin, that username and password are passed directly
+    to MySQL. phpMyAdmin does no account management on its own (other than
+    allowing one to manipulate the MySQL user account information); all users
+    must be valid MySQL users.</p>
+
+<p class="footnote" id="footnote_1">
+    <sup>1)</sup> phpMyAdmin can compress (Zip, GZip -RFC 1952- or Bzip2 formats)
+    dumps and <abbr title="comma seperated values">CSV</abbr> exports if you use
+    PHP with Zlib support (<tt>--with-zlib</tt>) and/or Bzip2 support
+    (<tt>--with-bz2</tt>). Proper support may also need changes in
+    <tt>php.ini</tt>.</p>
+
+<!-- INSTALLATION -->
+<h2 id="setup">Installation</h2>
+
+<ol><li><a href="#quick_install">Quick Install</a></li>
+    <li><a href="#setup_script">Setup script usage</a></li>
+    <li><a href="#linked-tables">Linked-tables infrastructure</a></li>
+    <li><a href="#upgrading">Upgrading from an older version</a></li>
+    <li><a href="#authentication_modes">Using authentication modes</a></li>
+</ol>
+
+<p class="important">
+    phpMyAdmin does not apply any special security methods to the MySQL database
+    server. It is still the system administrator's job to grant permissions on
+    the MySQL databases properly. phpMyAdmin's &quot;Privileges&quot; page can
+    be used for this.
+</p>
+
+<p class="important">
+    Warning for <acronym title="Apple Macintosh">Mac</acronym> users:<br />
+    if you are on a <acronym title="Apple Macintosh">Mac</acronym>
+    <abbr title="operating system">OS</abbr> version before
+    <abbr title="operating system">OS</abbr> X, StuffIt unstuffs with
+    <acronym title="Apple Macintosh">Mac</acronym> formats.<br />
+    So you'll have to resave as in BBEdit to Unix style ALL phpMyAdmin scripts
+    before uploading them to your server, as PHP seems not to like
+    <acronym title="Apple Macintosh">Mac</acronym>-style end of lines character
+    (&quot;<tt>\r</tt>&quot;).</p>
+
+<h3 id="quick_install">Quick Install</h3>
+<ol><li>Choose an appropriate distribution kit from the phpmyadmin.net
+	Downloads page. Some kits contain only the English messages, 
+	others contain all languages in UTF-8 format (this should be fine
+	in most situations), others contain all
+	languages and all character sets. We'll assume you chose a kit whose
+	name looks like <tt>phpMyAdmin-x.x.x-all-languages.tar.gz</tt>.	
+	</li>
+    <li>Untar or unzip the distribution (be sure to unzip the subdirectories):
+        <tt>tar -xzvf phpMyAdmin_x.x.x-all-languages.tar.gz</tt> in your webserver's
+        document root. If you don't have direct access to your document root,
+        put the files in a directory on your local machine, and, after step 4,
+        transfer the directory on your web server using, for example, ftp.</li>
+    <li>Ensure that all the scripts have the appropriate owner (if PHP is
+        running in safe mode, having some scripts with an owner different
+        from the owner of other scripts will be a
+        problem). See <a href="#faq4_2">
+        <abbr title="Frequently Asked Questions">FAQ</abbr> 4.2</a> and
+        <a href="#faq1_26"><abbr title="Frequently Asked Questions">FAQ</abbr>
+        1.26</a> for suggestions.</li>
+    <li>Now you must configure your installation. There are two methods that
+        can be used. Traditionally, users have hand-edited a copy of
+	<tt>config.inc.php</tt>, but now a wizard-style setup script is 
+	provided for those who prefer a graphical installation. Creating a 
+	<tt>config.inc.php</tt> file is
+        still a quick way to get started and needed for some advanced features.
+        <ul><li>To manually create the file, simply use your text editor to
+                create the file <tt>config.inc.php</tt> (you can copy
+                <tt>config.sample.inc.php</tt> to get minimal configuration
+                file) in the main (top-level) phpMyAdmin directory (the one
+                that contains <tt>index.php</tt>).  phpMyAdmin first loads
+                <tt>libraries/config.default.php</tt> and then overrides those
+                values with anything found in <tt>config.inc.php</tt>. If the
+                default value is okay for a particular setting, there is no
+                need to include it in <tt>config.inc.php</tt>.  You'll need a
+                few directives to get going, a simple configuration may look
+                like this:
+<pre>
+&lt;?php
+$cfg['blowfish_secret'] = 'ba17c1ec07d65003';  // use here a value of your choice
+
+$i=0;
+$i++;
+$cfg['Servers'][$i]['auth_type']     = 'cookie';
+?&gt;
+</pre>
+                Or, if you prefer to not be prompted every time you log in:
+<pre>
+&lt;?php
+
+$i=0;
+$i++;
+$cfg['Servers'][$i]['user']          = 'root';
+$cfg['Servers'][$i]['password']      = 'cbb74bc'; // use here your password
+?&gt;
+</pre>
+                For a full explanation of possible configuration values, see the
+                <a href="#config">Configuration Section</a> of this document.</li>
+            <li id="setup_script">Instead of manually editing
+                <tt>config.inc.php</tt>, you can use the
+                <a href="scripts/setup.php">Setup Script</a>. First you must
+                manually create a folder <tt>config</tt> in the phpMyAdmin
+                directory. This is a security measure. On a Linux/Unix system you
+                can use the following commands:
+<pre>
+cd phpMyAdmin
+mkdir config                        # create directory for saving
+chmod o+rw config                   # give it world writable permissions
+</pre>
+                And to edit an existing configuration, copy it over first:
+<pre>
+cp config.inc.php config/           # copy current configuration for editing
+chmod o+w config/config.inc.php     # give it world writable permissions
+</pre>
+                On other platforms, simply create the folder and ensure that your
+                web server has read and write access to it. <a href="#faq1_26">FAQ
+                1.26</a> can help with this.<br /><br />
+
+                Next, open <tt><a href="scripts/setup.php">scripts/setup.php</a>
+                </tt>in your browser. Note that <strong>changes are not saved to
+                disk until explicitly choose <tt>Save</tt></strong> from the
+                <i>Configuration</i> area of the screen. Normally the script saves
+                the new config.inc.php to the <tt>config/</tt> directory, but if
+                the webserver does not have the proper permissions you may see the
+                error "Cannot load or save configuration." Ensure that the <tt>
+                config/</tt> directory exists and has the proper permissions -
+                or use the <tt>Download</tt> link to save the config file locally
+                and upload (via FTP or some similar means) to the proper location.<br /><br />
+
+                Once the file has been saved, it must be moved out of the <tt>
+                config/</tt> directory and the permissions must be reset, again
+                as a security measure:
+<pre>
+mv config/config.inc.php .         # move file to current directory
+chmod o-rw config.inc.php          # remove world read and write permissions
+rm -rf config                      # remove not needed directory
+</pre>
+                Now the file is ready to be used. You can choose to review or edit
+                the file with your favorite editor, if you prefer to set some
+                advanced options which the setup script does not provide.</li></ul></li>
+    <li>If you are using the
+        <tt>auth_type</tt> &quot;config&quot;, it is suggested that you
+        protect the phpMyAdmin installation directory because using
+        config does not require a user to
+        enter a password to access the phpMyAdmin installation. Use of an alternate
+        authentication method is recommended, for example with
+        HTTP&#8211;AUTH in a <a href="#glossary"><i>.htaccess</i></a> file or switch to using
+        <tt>auth_type</tt> cookie or http. See the
+        <a href="#faqmultiuser"> multi&#8211;user sub&#8211;section</a> of this
+        <abbr title="Frequently Asked Questions">FAQ</abbr> for additional
+        information, especially <a href="#faq4_4">
+        <abbr title="Frequently Asked Questions">FAQ</abbr> 4.4</a>.</li>
+    <li>Open the <a href="index.php">main phpMyAdmin directory</a>
+        in your browser. phpMyAdmin should now display a welcome screen
+        and your databases, or a login dialog if using
+        <abbr title="HyperText Transfer Protocol">HTTP</abbr> or cookie
+        authentication mode.</li>
+    <li>You should deny access to the <tt>./libraries</tt> subfolder in your
+        webserver configuration. For Apache you can use supplied .htaccess file
+        in that folder, for other webservers, you should configure this yourself.
+        Such configuration prevents from possible path exposure and cross side
+        scripting vulnerabilities that might happen to be found in that code.</li>
+</ol>
+
+<h3 id="linked-tables">Linked-tables infrastructure</h3>
+
+<p> For a whole set of new features (bookmarks, comments,
+    <abbr title="structured query language">SQL</abbr>-history,
+    <abbr title="Portable Document Format">PDF</abbr>-generation, field contents
+    transformation, etc.) you need to create a set of special tables. Those
+    tables can be located in your own database, or in a central database for a
+    multi-user installation (this database would then be accessed by the
+    controluser, so no other user should have rights to it).</p>
+
+<p> Please look at your <tt>./scripts/</tt> directory, where you should find a
+    file called <i>create_tables.sql</i>. (If you are using a Windows server, pay
+    special attention to <a href="#faq1_23">
+    <abbr title="Frequently Asked Questions">FAQ</abbr> 1.23</a>).</p>
+
+<p> If your MySQL server's version is 4.1.2 or later, please use
+    <i>./scripts/create_tables_mysql_4_1_2+.sql</i> instead, for a new
+    installation.</p>
+
+<p> If you already had this infrastructure and upgraded to MySQL 4.1.2
+    or later, please use <i>./scripts/upgrade_tables_mysql_4_1_2+.sql</i>.</p
