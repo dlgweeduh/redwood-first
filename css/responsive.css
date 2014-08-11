@@ -131,8 +131,8 @@
 	}
     /* HOME */
 	.header {
-		min-height: inherit;
-		padding-bottom: 75px;
+/*		min-height: inherit;
+		padding-bottom: 75px;*/
 	}
 
 	.intro {
@@ -213,7 +213,7 @@
 }
     .buttons {
 	    margin-bottom: 0;
-	    margin-top: 30px;
+/*	    margin-top: 30px;*/
 	}
      
     .custom-button {

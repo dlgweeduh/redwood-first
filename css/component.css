@@ -414,7 +414,7 @@ ul.slide.inside {
 
 .cbp-ntaccordion {
 	list-style: none;
-	margin: 0;
+	margin: 0 0 3em 0;
 	padding: 0;
 	text-align: left;
 	position: relative;
@@ -429,14 +429,16 @@ ul.slide.inside {
 } 
 
 .cbp-ntaccordion h3 {
-	margin: 0 0 0.5em;
-	padding: 1em 0 0.5em;
+	margin: 0 auto;
+	padding: 0 0 0.5em;
 	border-bottom: 1px solid #ddd;
 	font-size: 2.75em;
 	font-weight: 300;
 	color: #404040;
 }
-
+.cbp-ntaccordion h3:hover {
+	color: #f37321;	
+}
 .cbp-ntaccordion h4 {
 	font-size: 1.2em;
 	text-transform: uppercase;
@@ -454,16 +456,16 @@ ul.slide.inside {
 
 .cbp-ntaccordion .cbp-ntcontent p {
 	color: #000000;
-	font-size: 1.25em;
-	font-weight: 300;
+	font-size: 1.5em;
+	font-weight: 400;
 	line-height: 2em;
-	padding: 1.5em;
 	border-radius: 2px;
 	margin: 0;
-	background-color: #f37321
+	background-color: #f37321;
+	text-indent: 50px;
 }
-ul > li:last-child {
-   padding-bottom: 50px;
+.cbp-ntaccordion .cbp-ntcontent > p {
+	padding: 1em 1em 0 1em;
 }
 /* Arrow icons */
 .cbp-ntaccordion > li > .cbp-nttrigger:before,
